@@ -1,0 +1,122 @@
+name: trenda_frontend
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.3
+  # Firebase
+  firebase_auth: ^5.3.0        # latest Firebase
+  firebase_core: ^3.15.2       # latest Firebase core
+  cloud_firestore: ^5.3.0
+  firebase_storage: ^12.4.10
+  firebase_messaging: 15.2.10
+  # Google Sign-In
+  google_sign_in: ^7.2.0
+  # Facebook Auth
+  flutter_facebook_auth: ^7.1.1
+  # Networking
+  connectivity_plus: ^6.1.5
+  http: ^1.1.2
+  dio: ^5.9.0
+  # Routing
+  go_router: ^14.2.7
+  # UI Components
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.9  
+  shimmer: ^3.0.0
+  lottie: ^3.0.0
+  # Image Handling
+  image_picker: ^1.0.7
+  file_picker: ^8.0.0 # used transitively via trenda_shared image_picker_service
+  flutter_image_compress: ^2.1.0
+  # Storage
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.2
+  collection: ^1.18.0
+  # Device Info
+  package_info_plus: ^8.0.0
+  device_info_plus: ^12.1.0
+  # Utils
+  uuid: ^4.5.1
+  intl: ^0.20.2
+  equatable: ^2.0.5
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  # URL Launcher
+  url_launcher: ^6.2.4
+  # Permissions
+  permission_handler: ^11.2.0
+  # Loading Indicators
+  flutter_spinkit: ^5.2.0
+  # Forms
+  flutter_form_builder: ^10.0.1
+  form_builder_validators: ^11.1.2
+  # Share
+  share_plus: ^10.1.2
+  # Image Viewing
+  photo_view: ^0.15.0
+
+
+  network_utils: ^0.1.1
+  cupertino_icons: ^1.0.8
+  phone_numbers_parser: ^9.0.11
+  intl_phone_number_input: ^0.7.5
+  internet_connection_checker: ^1.0.0
+  flutter_dotenv: ^5.1.0
+  carousel_slider: ^5.1.1
+  mime: ^2.0.0
+  http_parser: ^4.0.0
+  trenda_shared:
+    path: ../trenda_shared
+  speech_to_text: ^7.3.0
+  # Barcode Scanner
+  mobile_scanner: ^6.0.4
+  # QR generation (share an official product as a scannable code)
+  qr_flutter: ^4.1.0
+  # OpenStreetMap
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  geolocator: ^14.0.2
+  flutter_staggered_grid_view: ^0.7.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  web: ^1.0.0
+  flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.0
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.9
+  freezed: ^2.4.6
+  json_serializable: ^6.7.1
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+
+  uses-material-design: true
+  assets: 
+    - assets/images/trenda_logo.png
+    - assets/images/trenda_hero_banner.jpg
+
+flutter_native_splash:
+  color: "#080838"   # midnight blue
+  image: assets/images/trenda_logo.png
+  android: true
+  ios: true
+  web: false
+
+android_12:
+  color: "#080838"
+  image: assets/images/trenda_logo.png

@@ -1,0 +1,49 @@
+name: trenda_shared
+description: "A new Flutter project."
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  firebase_auth: ^5.3.0
+  mime: ^2.0.0
+  http_parser: ^4.0.0
+  image_picker: ^1.1.0
+  # Direct deps so ImagePickerService can enable Android's lightweight system
+  # Photo Picker (avoids the legacy gallery intent that kills MainActivity).
+  image_picker_android: ^0.8.13
+  image_picker_platform_interface: ^2.11.0
+  file_picker: '>=8.0.0 <11.0.0' # widened so admin (10.x) + other apps (8.x) both resolve via path dep
+  cross_file: ^0.3.4
+  cupertino_icons: ^1.0.8
+  dio: ^5.9.0
+  collection: ^1.19.1
+  equatable: ^2.0.7
+  # Real-time WebSocket (Socket.IO client)
+  socket_io_client: ^2.0.3+1
+  flutter_riverpod: ^2.4.0
+  # FCM Push Notifications
+  firebase_messaging: ^15.2.10
+  flutter_local_notifications: ^18.0.1
+  # Offline & Caching
+  shared_preferences: ^2.3.2
+  cached_network_image: ^3.4.1
+  connectivity_plus: ^6.0.5
+  # Date formatting
+  intl: ^0.20.2
+  url_launcher: ^6.3.2
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+
+flutter:
+  uses-material-design: true
+

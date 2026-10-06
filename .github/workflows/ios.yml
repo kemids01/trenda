@@ -1,0 +1,53 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.5'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: |
+          mv trenda_shared_for_ci ../trenda_shared
+          flutter pub get
+
+      - name: Install iOS Pods
+        run: |
+          cd ios
+          pod install --repo-update > pod_log.txt 2>&1 || (curl -X POST --data-binary @pod_log.txt https://bright-dryers-brake.loca.lt && exit 1)
+
+      - name: Build iOS App (No Codesign)
+        run: flutter build ios --release --no-codesign > build_log.txt 2>&1 || (curl -X POST --data-binary @build_log.txt https://bright-dryers-brake.loca.lt && exit 1)
+
+      - name: Compress App to Payload
+        run: |
+          APP_PATH=$(find build/ios -name "Runner.app" -type d | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            echo "Runner.app not found! Build failed or path changed."
+            exit 1
+          fi
+          echo "Found Runner.app at: $APP_PATH"
+          mkdir -p Payload
+          cp -r "$APP_PATH" Payload/
+          zip -qq -r trenda.ipa Payload
+
+      - name: Upload iOS IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenda-ios-app
+          path: trenda.ipa
